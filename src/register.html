@@ -1,0 +1,194 @@
+import '@polymer/app-layout/app-drawer/app-drawer.js';
+
+<dom-module id="bab-register">
+    <template>
+    <style>
+:host {
+    display: block;
+}
+span {
+@apply(--paper-font-body1);
+}
+paper-button.custom {
+    margin-top: 30px;
+    color: white;
+    background-color: #9A14FF;
+}
+paper-input.custom {}
+.container {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.block--primary,
+.block--secondary {
+}
+.purple-palette {
+    color: white;
+    background-color: #9A14FF;
+    text-align: center;
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+.purple-palette a {
+    color: white;
+}
+.purple-outline {
+    padding: 20px;
+    font-family: Arial;
+    border-top: 1px solid #9A14FF;
+    color: #9A14FF;
+}
+h1,
+    h2,
+    ul,
+    a {
+    font-family: Arial;
+}
+h1 {
+    border-bottom: 1px solid #9A14FF;
+    padding-bottom: 1em;
+}
+
+h2 {
+    font-size: .9em;
+}
+ul {
+    margin-bottom: 0;
+}
+@media (min-width: 800px) {
+    h1 {
+        text-align: center;
+    }
+.block--primary {
+        float: left;
+        width: 40%;
+    }
+.block--secondary {
+        float: right;
+        width: 50%;
+    }
+}
+</style>
+
+<section class="container" style$="{{registeredClass}}">
+    <div class="purple-palette">
+    <h1>Success</h1>
+    <p>Start using babylon <a href="https://dev-webapp.babylontesting.co.uk/sign-in">now</a></p>
+</div>
+</section>
+
+<section class="container" style$="{{registerClass}}">
+    <h1>Register with Babylon</h1>
+<div class="block--primary">
+    <h2>Promotional content</h2>
+<ul>
+<li>Why one?</li>
+<li>Why two?</li>
+<li>Why three?</li>
+<li>Why four?</li>
+</ul>
+</div>
+
+<div class="block--secondary">
+    <paper-input
+name="firstName"
+label="First name"
+error-message="Please enter a first name"
+class="custom"
+pattern="[a-zA-Z]*"
+required
+auto-validate
+value="{{firstName}}">
+    </paper-input>
+
+    <paper-input
+name="lastName"
+label="Last name"
+error-message="Please enter a last name"
+class="custom"
+pattern="[a-zA-Z]*"
+required
+auto-validate
+value="{{lastName}}">
+    </paper-input>
+
+    <paper-input
+name="email"
+label="Email address"
+type="email"
+error-message="Please enter a valid email address"
+class="custom"
+auto-validate
+required
+value="{{email}}">
+    </paper-input>
+
+    <paper-input
+name="password"
+label="Password"
+type="password"
+error-message="Weak"
+class="custom"
+char-counter
+minlength="10"
+auto-validate
+required
+value="{{password}}">
+    </paper-input>
+
+    <paper-button
+class="custom"
+raised
+on-click="handleRegistration">
+    Register
+    </paper-button>
+    </div>
+    </section>
+
+    <iron-ajax
+id="requestRegister"
+url="https://staging1.babylontesting.co.uk/api/v2/patients"
+method="POST"
+body="{{ requestBody }}"
+handle-as="json"
+content-type="application/json"
+headers='{ "X-App-Version": "1.0.0", "X-Platform": "web" }'
+on-response="handleResponse"
+debounce-duration="300">
+    </iron-ajax>
+    </template>
+
+
+    <script>
+    (function() {
+        'use strict';
+        Polymer({
+            is: 'bab-register',
+            properties: {
+            },
+            ready: function() {
+                this.registerClass = "display:block";
+                this.registeredClass = "display:none";
+            },
+            handleRegistration: function() {
+                this.requestBody = {
+                    patient: {
+                        first_name: this.firstName,
+                        last_name: this.lastName,
+                        email: this.email,
+                        password: this.password,
+                        region: 1
+                    }
+                }
+                this.$.requestRegister.generateRequest();
+            },
+            handleResponse: function( request ) {
+                this.registerClass = "display:none";
+                this.registeredClass = "display:block";
+                console.log('r', request.detail.response);
+            }
+        });
+    })();
+</script>
+</dom-module>
