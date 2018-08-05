@@ -6,7 +6,7 @@ TED Cyber Security Conference web-app on Google-Polymer
 ```
 npm install
 ```
-##Launching
+## Launching
 ```
 npm start
 ```
