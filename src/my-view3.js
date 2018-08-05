@@ -37,7 +37,8 @@ class MyView3 extends PolymerElement {
         border-right: 0; 
         height: 2rem;     
         outline: none; 
-        width: 30vw; 
+        width: 60vw; 
+        max-width: 300px;
         font-size: 1.7rem;
         }
         
