@@ -12,9 +12,15 @@ class MyView1 extends PolymerElement {
           color: darkgray;
           padding: 10px;
         }
+        
+        .speakers ul {
+        padding-left: 1.2vw;
+        
+        }
+        
         .speakers li {
            list-style: none;
-           margin-left: 1.4vw;
+           margin-left: 1.2vw;
            
         }
            
