@@ -2,6 +2,8 @@
 ## Description
 TED Cyber Security Conference web-app on Google-Polymer
 
+![alt text](./images/main1.png)
+
 ## Installation
 ```
 npm install
@@ -10,4 +12,4 @@ npm install
 ```
 npm start
 ```
- 
+
