@@ -13,15 +13,16 @@ class MyView3 extends PolymerElement {
           padding: 10px;
         }
         .button {
-        font-size: 1.3rem;
-        background-color: darkgray;
+        font-size: 1.4rem;
+        background-color: red;
         color: #eeeeee;       
         text-align: center;
         padding-top: 5px;
         padding-bottom: 5px;
-        width: 100px;
-        margin-top: 3rem;
-        border-radius: 10px;      
+        width: 150px;
+        margin-top: 3vh;
+        border-radius: 10px;  
+        cursor: pointer;    
         }
         
         .people {
@@ -29,10 +30,8 @@ class MyView3 extends PolymerElement {
          width: 40rem;
          margin-right: 3vw ;
          margin-left: 5vw;
-       
-       background-size: auto;
-       background: url("../images/people.png") center no-repeat;
-       right: 0;
+         background-size: auto;
+         background: url("../images/people.png") center no-repeat;
         }
         
         .view {
@@ -43,25 +42,27 @@ class MyView3 extends PolymerElement {
         }
         
         .title {
-          font-size: 5vh;
+          font-size: 3rem;
           color: red;
           font-weight: bolder;
-          margin: 2vh auto 3vh -1vw;
+          margin: 2vh auto 4vh -2vw;
          }
         
         input {
-        border-top: 0;
-        border-left: 0;
-        border-right: 0; 
-        height: 2rem;     
-        outline: none; 
-        width: 60vw; 
-        max-width: 300px;
-        font-size: 1.7rem;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0; 
+            height: 2rem;     
+            outline: none; 
+            width: 60vw; 
+            max-width: 500px;
+            font-size: 1.7rem;
         }
         
         .data {
-        margin-left: 3vw;
+        font-size: 1.2rem;
+        margin-left: 3.5vw;
+        margin-bottom: 3vh;
         }
       
       </style>

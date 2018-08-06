@@ -10,8 +10,6 @@ class MyView2 extends PolymerElement {
       <style include="shared-styles">
         :host {
           display: block;
-
-          
         }
         
         .view {
@@ -30,8 +28,9 @@ class MyView2 extends PolymerElement {
        right: 0;
       
        }
+       
       .title {
-      font-size: 5vh;
+      font-size: 3.7rem;
       color: red;
       font-weight: bolder;
       margin: 2vh auto 2vh -1vw;

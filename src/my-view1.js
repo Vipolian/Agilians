@@ -13,18 +13,16 @@ class MyView1 extends PolymerElement {
           padding: 10px;
         }
         
-        .speakers ul {
-        padding-left: 1.2vw;
-        
-        }
-        
-        .speakers li {
-           list-style: none;
-           margin-left: 1.2vw;
-           
+        .speakers {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 70vw;
+        margin-left: 3vw;
         }
            
         .discr {
+        margin-right: 4vw;
            margin-top: 1.5vh;
            display: flex;
            flex-direction: row;
@@ -39,11 +37,13 @@ class MyView1 extends PolymerElement {
            font-weight: bold;
            margin-bottom: 3.7vh;
            margin-left: 2vw;
+           text-shadow: 3px 2px 4px black, 0 0 0.5em red
         }
            
-        img {
-           margin-right: 3vw;
+        .speakers img {
+           margin-right: 2vw;
            height: 9rem;
+           border-radius: 3px;
         }
            
         .prob {
@@ -51,6 +51,17 @@ class MyView1 extends PolymerElement {
            font-size: 1.5rem;
            margin-left: 2.4vw;
            text-align: left;
+        }
+        
+        .prob2 {
+           display: flex;
+           flex-direction: row;
+           flex-wrap: wrap;
+           align-content: flex-start;
+           font-size: 1.5rem;
+           margin-left: 2.4vw;
+           text-align: left;
+           margin-bottom: 5vh;
         }
            
         .banner {
@@ -71,13 +82,19 @@ class MyView1 extends PolymerElement {
             font-weight: bolder;
             padding-left: 7vw;
             padding-top: 10vh;
-            text-shadow: 3px 2px 4px black, 0 0 1em red;
+            text-shadow: 3px 2px 4px black, 0 0 1.2em red;
            }
            
           .them li {
              list-style: square;      
              margin-left: 2.1vw;
              font-size: 1.8rem;
+           }
+           
+           .inst {
+           height: 28vh;
+           margin-right: 3vw;
+           border-radius: 6px;
            }
       </style>
       
@@ -108,8 +125,7 @@ class MyView1 extends PolymerElement {
    
     <p class="shead">Speakers</p>
       <div class="speakers">
-        <ul>
-         <li>
+        <div>
           <h2>Jennifer Granick | TED Speaker</h2>
             <div class="discr">           
                 <img src="../images/Jen.jpg">
@@ -118,8 +134,8 @@ class MyView1 extends PolymerElement {
                         http://www.ted.com/speakers/jennifer_granick
                     </div>
             </div>
-           </li>
-           <li>
+            </div>
+           <div>
              <h2>James Lyne | TED Speaker</h2>    
              <div class="discr">
                <img src="../images/James.jpg">
@@ -129,8 +145,8 @@ class MyView1 extends PolymerElement {
                     </p> 
                 </div>
              </div>
-           </li>
-           <li>
+           </div>
+           <div>
             <h2>Mikko Hypponen | TED Speaker</h2>    
                 <div class="discr">
                    <img src="../images/Mikko.jpg">
@@ -140,8 +156,8 @@ class MyView1 extends PolymerElement {
                         </p> 
                     </div>
                  </div>
-            </li>
-            <li>
+            </div>
+            <div>
                 <h2>Chris Domas | TED Speaker</h2>  
                     <div class="discr">
                     <img src="../images/Chris.jpg">
@@ -151,10 +167,17 @@ class MyView1 extends PolymerElement {
                             </p> 
                         </div>
                      </div> 
-            </li>
-          </ul>
+            </div>
         </div>
-      
+        
+      <p class="shead">Place</p>
+      <div class="prob2">
+         <img src="../images/Inst.jpg" class="inst">
+         <p>Moscow rocket college on the Yauza river
+         <br>— is another name of our university used in the West. 
+         <br>Due to BMSTU is pioneer works in the field of aviation, 
+         <br>rocketry, nuclear power and radio electronics</br> 
+      </div>
     `;
   }
 }
