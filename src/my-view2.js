@@ -1,8 +1,8 @@
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import './shared-styles.js';
-import '@em-polymer/google-map/google-map';
-import '@em-polymer/google-map/google-map-marker';
+
+
 
 class MyView2 extends PolymerElement {
   static get template() {
@@ -58,9 +58,7 @@ class MyView2 extends PolymerElement {
         <p>ul. Baumanskaya 2-ya, 5
         <br>BMSTU, Moscow</p>
         </div>
-        <!--<google-map slot="markers" fit-to-markers api-key="AIzaSyD3E1D9b-Z7ekrT3tbhl_dy8DCXuIuDDRc">-->
-            <!--<google-map-marker slot="markers" latitude="37.78" longitude="-122.4" draggable="true"></google-map-marker>-->
-        <!--</google-map>-->
+        
         <div>
         <h1>How?</h1>
             <p>Email: polevit@yandex.ru

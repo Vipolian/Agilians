@@ -1,148 +1,136 @@
-
+import '@polymer/iron-ajax/iron-ajax'
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import './shared-styles.js';
-import Transport from './my-transport';
-import Validator from './my-validator';
+import '@polymer/paper-input/paper-input'
+
+
+
 
 class MyView3 extends PolymerElement {
-  static get template() {
-      return html`
+    static get template() {
+        return html`
       <style include="shared-styles">
         :host {
           display: block;
-
           padding: 10px;
         }
-        .button {
-        font-size: 1.4rem;
+        
+        .button11 {
+        cursor: pointer;
         background-color: red;
         color: #eeeeee;       
         text-align: center;
         padding-top: 5px;
         padding-bottom: 5px;
-        width: 150px;
+        width: 100px;
         margin-top: 3vh;
         border-radius: 10px;  
-        cursor: pointer;    
-        }
-        
-        .people {
-         height: 55vh;
-         width: 40rem;
-         margin-right: 3vw ;
-         margin-left: 5vw;
-         background-size: auto;
-         background: url("../images/people.png") center no-repeat;
-        }
-        
-        .view {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
+        margin-left: 3vw;    
+        margin-bottom: 2vh;
         }
         
         .title {
           font-size: 3rem;
           color: red;
           font-weight: bolder;
-          margin: 2vh auto 4vh -2vw;
-         }
-        
-        input {
-            border-top: 0;
-            border-left: 0;
-            border-right: 0; 
-            height: 2rem;     
-            outline: none; 
-            width: 60vw; 
-            max-width: 500px;
-            font-size: 1.7rem;
+          margin: 2vh auto 4vh 2vw;
         }
         
         .data {
-        font-size: 1.2rem;
-        margin-left: 3.5vw;
-        margin-bottom: 3vh;
+        margin-top: 4rem;
+        margin-left: 3vw;
+        max-width: 450px;
         }
       
       </style>
-
+      
       <div class="card">
-        <div class="view">
+        <h1 class="title">Registration</h1>
           <div class="data">  
-          <p class="title">Registration</p>
-              
-            <p>Name: </p>
-            <iron-input> <input> </iron-input>
-            <p>Surname:</p>
-            <iron-input> <input> </iron-input>
-            <p>Email:</p>
-            <input>
-            <p>Password:</p>
-            <input>
-            <p>Password Confirm:</p>
-            <input>
-           
-           <div class="button" onclick="onSubmit()">submit</div>
+              <paper-input
+                label="First name"
+                error-message="Please enter a first name"
+                pattern="[a-zA-Z]*"
+                required
+                auto-validate
+                value="{{firstName}}">
+              </paper-input>
+                
+              <paper-input
+                label="Last name"
+                error-message="Please enter a last name"
+                pattern="[a-zA-Z]*"
+                required
+                auto-validate
+                value="{{lastName}}">
+              </paper-input>
+    
+              <paper-input
+                label="Email address"
+                type="email"
+                error-message="Please enter a valid email address"
+                auto-validate
+                required
+                value="{{email}}">
+              </paper-input>
+              <paper-input
+                label="Password"
+                type="password"
+                error-message="Weak"
+                char-counter
+                minlength="10"
+                auto-validate
+                required
+                value="{{password}}">
+              </paper-input>
           </div>     
-           <div class="people"></div>
-          </div>
+          <div class="button11" id="smbt">submit</div>
       </div>
+      <iron-ajax
+            auto
+            id="requestRegister"
+            url="https://staging1.babylontesting.co.uk/api/v2/patients"
+            method="POST"
+            body="{'435345'}"
+            handle-as="json"
+            content-type="application/json"
+            headers='{ "X-App-Version": "1.0.0", "X-Platform": "web" }'
+            on-response="hResponse"
+            debounce-duration="300">
+        </iron-ajax>
     `;
-  }
+    }
 
-    // inputs = [...this.getElementsByClassName('classToFind')];
-    // errorFields = [...this.getElementsByClassName('login-page_error')];
-    //
-    // showErrors (errors, errorFields, inputs) {
-    //     inputs.forEach((input, i) => {
-    //         input.addEventListener('blur', () => {
-    //             errorFields[i].innerHTML = '';
-    //             input.style.borderColor = 'dark-grey';
-    //             this.isValid([input], [errorFields[i]]);
-    //         });
-    //     });
-    //
-    //     errorFields.forEach((input, i) => {
-    //         errors.forEach((err) => {
-    //             if (input.getAttribute('name') === err.class[1]) {
-    //                 input.innerHTML = err.innerHTML;
-    //                 inputs[i].style.borderColor = '#E8175D';
-    //                 inputs[i].style.boxShadow = '0 0 15px 4px #E8175D';
-    //             }
-    //         });
-    //     });
-    // };
-    //
-    // isValid (inputs = [], errorFields = []) {
-    //     const fields = [...document.getElementsByClassName('classToFind')];
-    //     const errors = Validator(fields);
-    //     if (errors.length === 0) {
-    //         return true;
-    //     }
-    //     this.showErrors(errors, errorFields, inputs);
-    //     return false;
-    // };
-    //
-    // onSubmit() {
-    // if (this.isValid(this.inputs, this.errorFields)) {
-    //     let request = {};
-    //     this.inputs.forEach((input) => {
-    //         if (input.name === 'login') {
-    //             request.login = input.value;
-    //         }
-    //         if (input.name === 'email') {
-    //             request.email = input.value;
-    //         }
-    //         if (input.name === 'password') {
-    //             request.password = input.value;
-    //         }
-    //     });
-    //
-    //     Transport.Post(adr, request);
-    //     }
-    // }
+    ready() {
+        super.ready();
+        this.$.smbt.addEventListener('click',function() {
+            // let ajax = document.getElementById('requestRegister');
+            // ajax.body = {
+            //         first_name: this.firstName,
+            //         last_name: this.lastName,
+            //         email: this.email,
+            //         password: this.password,
+            // };
+            // ajax.generateRequest();
+            fetch("https://staging1.babylontesting.co.uk/api/v2/patients", {
+                method: "POST",
+                mode: "cors",
+                cache: "no-cache",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    firstName:this.firstName,
+                    lastName:this.lastName,
+                    email: this.email,
+                    password: this.password,
+                }),
+            })
+        })
+    }
+
+
+
 }
 
 window.customElements.define('my-view3', MyView3);
