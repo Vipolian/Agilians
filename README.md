@@ -1,4 +1,4 @@
-# Agilians
+# Ted-Conference
 ## Description
 TED Cyber Security Conference web-app on Google-Polymer
 
